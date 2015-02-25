@@ -1,5 +1,5 @@
-variable "access_key" {}
-variable "secret_key" {}
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
 
 variable "key_name" {
     description = "Name of the SSH keypair to use in AWS."

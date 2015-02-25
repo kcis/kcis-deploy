@@ -22,12 +22,14 @@ https://www.terraform.io/downloads.html をダウンロードしてパスを通�
 
 ![](img/access_secret_key3.png)
 
-このアクセスキーとシークレットキーを "~/.aws/kcis-deploy.tfvars" に保存します。
+このアクセスキーとシークレットキーを "~/.aws/kcis-deploy.json" に保存します。
 
 ```
-$ vi ~/.aws/kcis-deploy.tfvars
-access_key = "AKIAJAK635UD6CGCX2CA"
-secret_key = "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"
+$ vi ~/.aws/kcis-deploy.json
+{
+  "aws_access_key": "AKIAJAK635UD6CGCX2CA",
+  "aws_secret_key": "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"
+}
 ```
 
 ### "kcis-deploy"の名前でssh鍵ペアを生成
@@ -54,4 +56,6 @@ $ chmod 600 ~/.aws/kcis-deploy.pem
 
 ## デプロイ実行
 
-xxx
+```
+$ make apply
+```

@@ -1,14 +1,14 @@
 # Specify the provider and access details
 provider "aws" {
-    access_key = "${var.access_key}"
-    secret_key = "${var.secret_key}"
+    access_key = "${var.aws_access_key}"
+    secret_key = "${var.aws_secret_key}"
     region = "${var.aws_region}"
 }
 
 # Our default security group to access
 # the instances over SSH and HTTP
 resource "aws_security_group" "default" {
-    name = "terraform_example"
+    name = "kcis-deploy-sgroup"
     description = "Used in the terraform"
 
     # SSH access from anywhere
@@ -30,7 +30,7 @@ resource "aws_security_group" "default" {
 
 
 resource "aws_elb" "web" {
-  name = "terraform-example-elb"
+  name = "kcis-deploy-elb"
 
   # The same availability zone as our instance
   availability_zones = ["${aws_instance.web.availability_zone}"]
@@ -74,14 +74,10 @@ resource "aws_instance" "web" {
   # Our Security group to allow HTTP and SSH access
   security_groups = ["${aws_security_group.default.name}"]
 
-  # We run a remote provisioner on the instance after creating it.
-  # In this case, we just install nginx and start it. By default,
-  # this should be on port 80
+  # Login test
   provisioner "remote-exec" {
     inline = [
-        "sudo apt-get -y update",
-        "sudo apt-get -y install nginx",
-        "sudo service nginx start"
+        "cat /proc/cpuinfo"
     ]
   }
 }

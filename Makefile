@@ -1,4 +1,4 @@
-TERRAFORM_FLAG = -var-file ${HOME}/.aws/kcis-deploy.tfvars
+TERRAFORM_FLAG = -var-file ${HOME}/.aws/kcis-deploy.json
 
 help:
 	terraform || true
