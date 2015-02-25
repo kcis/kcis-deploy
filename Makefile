@@ -1,4 +1,5 @@
 TERRAFORM_FLAG = -var-file ${HOME}/.aws/kcis-deploy.json
+PACKER_FLAG = -var-file ${HOME}/.aws/kcis-deploy.json
 
 help:
 	terraform || true
@@ -11,3 +12,6 @@ plan apply destroy refresh:
 
 plan_destroy:
 	terraform plan -destroy ${TERRAFORM_FLAG}
+
+kcis-web.stamp:
+	packer build ${PACKER_FLAG} web.json
