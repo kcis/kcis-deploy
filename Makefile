@@ -6,7 +6,7 @@ help:
 show:
 	terraform $@
 
-plan apply destroy:
+plan apply destroy refresh:
 	terraform $@ ${TERRAFORM_FLAG}
 
 plan_destroy:
