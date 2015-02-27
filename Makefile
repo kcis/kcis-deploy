@@ -13,5 +13,5 @@ plan apply destroy refresh:
 plan_destroy:
 	terraform plan -destroy ${TERRAFORM_FLAG}
 
-kcis-web.stamp:
+pack_web:
 	packer build ${PACKER_FLAG} web.json
